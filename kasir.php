@@ -35,9 +35,17 @@ if (isset($_SESSION['cart'])) {
 	<hr>
 	<div class="row">
 		<div class="col-md-8">
-			<form method="post" action="keranjang_act.php">
-				<div class="form-group">
-					<input type="text" name="kode_barang" class="form-control" placeholder="Masukkan Kode Barang" autofocus>
+		<form method="post" action="keranjang_update.php">
+				<div class="input-group">
+					<select class="form-control" name="id_barang">
+						<option value="">Pilih Barang</option>
+						<?php while ($row = mysqli_fetch_array($barang)) { ?>
+							<option value="<?=$row['id_barang']?>"><?=$row['nama']?></option>
+						<?php } ?>
+					</select>
+					<span class="input-group-btn">
+						<button class="btn btn-primary" type="submit">Tambah</button>
+					</span>
 				</div>
 			</form>
 			<br>
