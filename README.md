@@ -1,4 +1,3 @@
 # Aplikasi Kasir
 
-ROPIII NASTAINNNN
-ropi 2
+adam
