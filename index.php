@@ -93,12 +93,13 @@ if (isset($_SESSION['userid'])) {
               User
             </a>
           </li>
-          <li class="nav-item">
+          <!-- uncomment aja klo mau nambahin fiturnya -->
+          <!-- <li class="nav-item">
             <a class="nav-link" href="index.php?page=dis_barang">
               <span data-feather="bar-chart-2"></span>
               Diskon Barang
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
