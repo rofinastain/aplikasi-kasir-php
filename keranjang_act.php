@@ -52,8 +52,7 @@ if (isset($_POST['kode_barang'])) {
             'id' => $b['id_barang'],
             'nama' => $b['nama'],
             'harga' => $b['harga'],
-            'qty' => $qty,
-            'diskon' => 0,
+            'qty' => $qty
         ];
 
         $_SESSION['cart'][] = $barang;

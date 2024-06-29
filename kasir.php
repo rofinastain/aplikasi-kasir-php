@@ -9,7 +9,7 @@ $barang = mysqli_query($dbconnect, 'SELECT * FROM barang');
 $sum = 0;
 if (isset($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $key => $value) {
-        $sum += ($value['harga'] * $value['qty']) - $value['diskon'];
+        $sum += ($value['harga'] * $value['qty']);
     }
 }
 
@@ -35,12 +35,12 @@ if (isset($_SESSION['cart'])) {
 	<hr>
 	<div class="row">
 		<div class="col-md-8">
-		<form method="post" action="keranjang_update.php">
+		<form method="post" action="keranjang_act.php">
 				<div class="input-group">
-					<select class="form-control" name="id_barang">
+					<select class="form-control" name="kode_barang">
 						<option value="">Pilih Barang</option>
 						<?php while ($row = mysqli_fetch_array($barang)) { ?>
-							<option value="<?=$row['id_barang']?>"><?=$row['nama']?></option>
+							<option value="<?=$row['kode_barang']?>"><?=$row['nama']?></option>
 						<?php } ?>
 					</select>
 					<span class="input-group-btn">
@@ -56,22 +56,20 @@ if (isset($_SESSION['cart'])) {
 					<th>Harga</th>
 					<th>Qty</th>
 					<th>Sub Total</th>
-					<th></th>
+					<th>Tambah</th>
+					<th>Hapus</th>
 				</tr>
-				<?php if (isset($_SESSION['cart'])): ?>
+				<!-- <?php if (isset($_SESSION['cart'])): ?> -->
 				<?php foreach ($_SESSION['cart'] as $key => $value) { ?>
 					<tr>
-						<td>
-							<?=$value['nama']?>
-							<?php if ($value['diskon'] > 0): ?>
-								<br><small class="label label-danger">Diskon <?=number_format($value['diskon'])?></small>
-							<?php endif;?>
-						</td>
-						<td align="right"><?=number_format($value['harga'])?></td>
+						<td><?=$value['nama']?></td>
+						<td><?=$value['harga']?></td>
+						<td><?=$value['qty']?></td>
+						<td><?=$value['qty']*$value['harga']?></td>
+						<!-- <td align="right"><?=number_format($value['harga'])?></td> -->
 						<td class="col-md-2">
 							<input type="number" name="qty[<?=$key?>]" value="<?=$value['qty']?>" class="form-control">
 						</td>
-						<td align="right"><?=number_format(($value['qty'] * $value['harga'])-$value['diskon'])?></td>
 						<td><a href="keranjang_hapus.php?id=<?=$value['id']?>" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td>
 					</tr>
 				<?php } ?>
