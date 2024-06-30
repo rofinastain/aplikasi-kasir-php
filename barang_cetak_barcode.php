@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 include 'config.php';
 
 $view = $dbconnect->query('SELECT * FROM barang');
@@ -36,4 +36,4 @@ while ($row = $view->fetch_array()) {
         <?php endforeach; ?>
     </table>
 </body>
-</html>
+</html> -->

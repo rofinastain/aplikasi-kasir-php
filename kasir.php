@@ -1,6 +1,6 @@
 <?php
-include 'config.php';
 session_start();
+include 'config.php';
 include 'authcheckkasir.php';
 
 $barang = mysqli_query($dbconnect, 'SELECT * FROM barang');
@@ -35,7 +35,7 @@ if (isset($_SESSION['cart'])) {
 	<hr>
 	<div class="row">
 		<div class="col-md-8">
-		<form method="post" action="keranjang_act.php">
+		<form method="post" action="keranjang_act.php" class="form-inline">
 				<div class="input-group">
 					<select class="form-control" name="kode_barang">
 						<option value="">Pilih Barang</option>
@@ -43,6 +43,9 @@ if (isset($_SESSION['cart'])) {
 							<option value="<?=$row['kode_barang']?>"><?=$row['nama']?></option>
 						<?php } ?>
 					</select>
+				</div>
+				<div class="input-group">
+					<input type="number" name="qty" class="form-control" placeholder="Jumlah">
 					<span class="input-group-btn">
 						<button class="btn btn-primary" type="submit">Tambah</button>
 					</span>
@@ -56,20 +59,18 @@ if (isset($_SESSION['cart'])) {
 					<th>Harga</th>
 					<th>Qty</th>
 					<th>Sub Total</th>
-					<th>Tambah</th>
 					<th>Hapus</th>
 				</tr>
-				<!-- <?php if (isset($_SESSION['cart'])): ?> -->
+				<?php if (isset($_SESSION['cart'])): ?>
 				<?php foreach ($_SESSION['cart'] as $key => $value) { ?>
 					<tr>
 						<td><?=$value['nama']?></td>
-						<td><?=$value['harga']?></td>
-						<td><?=$value['qty']?></td>
-						<td><?=$value['qty']*$value['harga']?></td>
-						<!-- <td align="right"><?=number_format($value['harga'])?></td> -->
+						<td align="right"><?=number_format($value['harga'])?></td>
 						<td class="col-md-2">
 							<input type="number" name="qty[<?=$key?>]" value="<?=$value['qty']?>" class="form-control">
 						</td>
+						<td align="right"><?=number_format($value['qty']*$value['harga'])?></td>
+
 						<td><a href="keranjang_hapus.php?id=<?=$value['id']?>" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a></td>
 					</tr>
 				<?php } ?>
@@ -84,7 +85,7 @@ if (isset($_SESSION['cart'])) {
 				<input type="hidden" name="total" value="<?=$sum?>">
 			<div class="form-group">
 				<label>Bayar</label>
-				<input type="text" id="bayar" name="bayar" class="form-control">
+				<input type="text" id="bayar" name="bayar" class="form-control" required>
 			</div>
 			<button type="submit" class="btn btn-primary">Selesai</button>
 			</form>

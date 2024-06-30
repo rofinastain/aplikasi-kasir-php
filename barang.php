@@ -32,7 +32,7 @@ $view = $dbconnect->query('SELECT * FROM barang');
 
 	<h1>List Barang</h1>
 	<a href="/barang_add.php" class="btn btn-primary">Tambah data</a>
-	<a href="/barang_cetak_barcode.php" class="btn btn-success">Cetak Barcode</a>
+	<!-- <a href="/barang_cetak_barcode.php" class="btn btn-success">Cetak Barcode</a> -->
 	<hr>
 	<table class="table table-bordered">
 		<tr>

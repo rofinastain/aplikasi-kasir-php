@@ -1,7 +1,18 @@
 <?php
-include 'config.php';
 session_start();
+include 'config.php';
 include 'authcheckkasir.php';
+
+// Mulai sesi jika belum dimulai
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Inisialisasi 'cart' sebagai array kosong jika belum ada
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
 
 if (isset($_POST['kode_barang'])) {
     $kode_barang = $_POST['kode_barang'];
@@ -11,12 +22,12 @@ if (isset($_POST['kode_barang'])) {
     $data = mysqli_query($dbconnect, "SELECT * FROM barang WHERE kode_barang='$kode_barang'");
     $b = mysqli_fetch_assoc($data);
 
-    //cek diskon barang
-    $disbarang = mysqli_query($dbconnect, "SELECT * FROM disbarang WHERE barang_id='$b[id_barang]'");
-    $disb = mysqli_fetch_assoc($disbarang);
+    // //cek diskon barang
+    // $disbarang = mysqli_query($dbconnect, "SELECT * FROM disbarang WHERE barang_id='$b[id_barang]'");
+    // $disb = mysqli_fetch_assoc($disbarang);
 
     //cek jika di keranjang sudah ada barang yang masuk
-    $key = array_search($b['id_barang'], array_column($_SESSION['cart'], 'id'));
+    $key = array_search($b['id_barang'], array_column($_SESSION['cart'], 'id_barang'));
 	// return var_dump($key);
 
     if ($key !== false) {
