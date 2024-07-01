@@ -24,7 +24,7 @@ foreach ($_SESSION['cart'] as $item) {
     }
 }
 
-// Insert ke tabel transaksi
+// Lanjutkan dengan proses transaksi jika stok cukup
 $insertTransaksi = mysqli_query($dbconnect, "INSERT INTO transaksi (tanggal_waktu, nomor, total, nama, bayar, kembali) VALUES ('$tanggal_waktu', '$nomor', '$total', '$nama', '$bayar', '$kembali')");
 
 if ($insertTransaksi) {
