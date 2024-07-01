@@ -41,22 +41,19 @@ $view = $dbconnect->query('SELECT * FROM transaksi');
 			<th>Kasir</th>
 			<th></th>
 		</tr>
-		<?php
-
-        while ($row = $view->fetch_array()) { ?>
-
-		<tr>
-			<td> <?= $row['nomor'] ?> </td>
-			<td><?= $row['tanggal_waktu'] ?></td>
-			<td><?=$row['total']?></td>
-			<td><?=$row['nama']?></td>
-			<td>
-                <a href="/unduh_struk.php?idtrx=<?=$row['id_transaksi']?>" class="btn btn-primary">Lihat</a>
-			</td>
-		</tr>
-
-		<?php }
+		<?php while ($row = $view->fetch_array()) : 
+            $formatted_date = date('d-m-Y H:i:s', strtotime($row['tanggal_waktu'])); // Format tanggal di sini
         ?>
+            <tr>
+                <td><?= $row['nomor'] ?></td>
+                <td><?= $formatted_date ?></td>
+                <td><?= number_format($row['total']) ?></td>
+                <td><?= $row['nama'] ?></td>
+                <td>
+                    <a href="/unduh_struk.php?idtrx=<?= $row['id_transaksi'] ?>" class="btn btn-primary">Lihat</a>
+                </td>
+            </tr>
+        <?php endwhile; ?>
 
 	</table>
 </div>

@@ -6,7 +6,7 @@ use Dompdf\Dompdf;
 
 // instantiate and use the dompdf class
 $dompdf = new Dompdf();
-$dompdf->loadHtml('Hi selamat datang di channel Mokhamad Ariadi');
+$dompdf->loadHtml('Hi selamat datang');
 
 // (Optional) Setup the paper size and orientation
 $dompdf->setPaper('A4', 'landscape');

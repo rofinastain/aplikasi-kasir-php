@@ -80,7 +80,7 @@ if (isset($_SESSION['cart'])) {
 			</form>
 		</div>
 		<div class="col-md-4">
-			<h3>Total Rp. <?=number_format($sum)?></h3>
+			<h3>Total Rp <?=number_format($sum)?></h3>
 			<form action="transaksi_act.php" method="POST">
 				<input type="hidden" name="total" value="<?=$sum?>">
 			<div class="form-group">
@@ -98,7 +98,7 @@ if (isset($_SESSION['cart'])) {
 	var bayar = document.getElementById('bayar');
 
 	bayar.addEventListener('keyup', function (e) {
-        bayar.value = formatRupiah(this.value, 'Rp. ');
+        bayar.value = formatRupiah(this.value, 'Rp ');
         // harga = cleanRupiah(dengan_rupiah.value);
         // calculate(harga,service.value);
     });
@@ -118,7 +118,7 @@ if (isset($_SESSION['cart'])) {
         }
 
         rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp ' + rupiah : '');
     }
 
     //generate dari inputan rupiah menjadi angka

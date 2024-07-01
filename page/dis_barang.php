@@ -1,4 +1,4 @@
-
+<!-- 
 <?php
 include 'authcheck.php';
 $view = $dbconnect->query('SELECT disbarang.*, barang.nama as barang FROM disbarang inner join barang ON disbarang.barang_id=barang.id_barang');
@@ -48,4 +48,4 @@ $view = $dbconnect->query('SELECT disbarang.*, barang.nama as barang FROM disbar
 	?>
 
 </table>
-</div>
+</div> -->

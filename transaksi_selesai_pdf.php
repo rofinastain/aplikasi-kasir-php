@@ -16,7 +16,7 @@ $detail = mysqli_query($dbconnect,"SELECT transaksi_detail.*, barang.nama FROM `
 	<title>Kasir Selesai</title>
 	<style type="text/css">
 		body{
-			color: #a7a7a7;
+			color: #000000;
 			padding: 0px 210px;
 		}
 	</style>
@@ -25,9 +25,9 @@ $detail = mysqli_query($dbconnect,"SELECT transaksi_detail.*, barang.nama FROM `
 	<div align="center">
 		<table width="100%" border="0" cellpadding="1" cellspacing="0">
 			<tr align="center">
-				<th>Toko ADI <br>
-					Jl Rokan Kiri 28 Bowongan Arjowinangun <br>
-				Pacitan, Jawa Timur, 60822</th>
+			<th>Toko Sya'adah <br>
+					Jl. Pertengahan Gg. Salam 4  <br>
+				Cijantung, Pasar Rebo, Jakarta Timur</th>
 			</tr>
 			<tr align="center"><td><hr></td></tr>
 			<tr align="center">
@@ -63,13 +63,13 @@ $detail = mysqli_query($dbconnect,"SELECT transaksi_detail.*, barang.nama FROM `
 		<table width="100%" border="0" cellpadding="1" cellspacing="0">
 			<tr><td><hr></td></tr>
 			<tr align="center">
-				<th>Terimkasih, Selamat Belanja Kembali</th>
+				<th>Terimakasih, Selamat Belanja Kembali</th>
 			</tr>
 			<tr align="center">
 				<th>===== Layanan Konsumen ====</th>
 			</tr>
 			<tr align="center">
-				<th>SMS/CALL 085895986529 </th>
+				<th>WhatsApp +6281932855057</th>
 			</tr>
 		</table>
 	</div>

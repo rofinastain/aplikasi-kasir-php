@@ -26,7 +26,7 @@ $view = $dbconnect->query("SELECT u.*,r.nama as nama_role FROM user as u INNER J
 	<hr>
 	<table class="table table-bordered">
 		<tr>
-			<th>ID User</th>
+			<!-- <th>ID User</th> -->
 			<th>Nama</th>
 			<th>Username</th>
 			<th>Password</th>
@@ -38,7 +38,7 @@ $view = $dbconnect->query("SELECT u.*,r.nama as nama_role FROM user as u INNER J
 		while ($row = $view->fetch_array()) { ?>
 
 		<tr>
-			<td> <?= $row['id_user'] ?> </td>
+			<!-- <td> <?= $row['id_user'] ?> </td> -->
 			<td><?= $row['nama'] ?></td>
 			<td><?=$row['username']?></td>
 			<td><?=$row['password']?></td>

@@ -1,4 +1,4 @@
-
+<!-- 
 <?php
 
 include 'authcheck.php';
@@ -54,4 +54,4 @@ if(isset($_POST['update']))
   	<input type="submit" name="update" value="Update" class="btn btn-primary">
   	<a href="?page=dis_barang" class="btn btn-warning">Kembali</a>
 	</form>
-</div>
+</div> -->

@@ -23,8 +23,8 @@ $view = $dbconnect->query('SELECT * FROM role');
 	<hr>
 	<table class="table table-bordered">
 		<tr>
-			<th>ID Role</th>
-			<th>Nama</th>
+			<!-- <th>ID Role</th> -->
+			<th>Role</th>
 			<th>Aksi</th>
 		</tr>
 		<?php
@@ -32,7 +32,7 @@ $view = $dbconnect->query('SELECT * FROM role');
 		while ($row = $view->fetch_array()) { ?>
 
 		<tr>
-			<td> <?= $row['id_role'] ?> </td>
+			<!-- <td> <?= $row['id_role'] ?> </td> -->
 			<td><?= $row['nama'] ?></td>
 			<td>
 				<a href="index.php?page=role_edit&id=<?= $row['id_role'] ?>">Edit</a> |

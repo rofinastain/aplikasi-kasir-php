@@ -1,4 +1,4 @@
-
+<!-- 
 <?php
 
 include 'authcheck.php';
@@ -43,4 +43,4 @@ if (isset($_POST['simpan'])) {
   	<input type="submit" name="simpan" value="Simpan" class="btn btn-primary">
     <a href="?page=dis_barang" class="btn btn-warning">Kembali</a>
 	</form>
-</div>
+</div> -->

@@ -249,10 +249,18 @@ class PDFLib implements Canvas
         $this->_pdf->set_info("Producer Addendum", sprintf("%s + PDFLib %s", $dompdf->version, $this->getPDFLibMajorVersion()));
 
         // Silence pedantic warnings about missing TZ settings
-        $tz = @date_default_timezone_get();
-        date_default_timezone_set("UTC");
-        $this->_pdf->set_info("Date", date("Y-m-d"));
-        date_default_timezone_set($tz);
+// Simpan zona waktu saat ini
+$tz = date_default_timezone_get();
+
+// Set zona waktu ke Asia/Jakarta
+date_default_timezone_set("Asia/Jakarta");
+
+// Set info tanggal pada PDF dengan tanggal saat ini
+$this->_pdf->set_info("Date", date("Y-m-d"));
+
+// Kembalikan zona waktu ke setting sebelumnya
+date_default_timezone_set($tz);
+
 
         if (self::$IN_MEMORY) {
             $this->_pdf->begin_document("", "");

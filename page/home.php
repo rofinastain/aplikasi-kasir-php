@@ -1,2 +1,2 @@
-<h4>Ini halaman Home lohh </h4>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores, quis quia? Molestias aperiam eligendi ea nam dignissimos repellendus laudantium quibusdam ut, in excepturi iste? Nesciunt quo necessitatibus repellendus corrupti quia?</p>
+<h3>Hai, <?=$_SESSION['nama']?></h3>
+<p>Selamat datang di dashboard admin Toko Sya'adah, tempat Anda dapat mengelola dan memantau semua kegiatan toko dengan mudah.</p>

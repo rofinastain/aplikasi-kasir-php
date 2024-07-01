@@ -1,4 +1,4 @@
-
+<!-- 
 <?php
 
 include '../config.php';
@@ -16,4 +16,4 @@ if (isset($_GET['id'])) {
 	header('location: index.php?page=dis_barang');
 }
 
-?>
+?> -->

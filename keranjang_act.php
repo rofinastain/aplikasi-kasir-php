@@ -3,62 +3,37 @@ session_start();
 include 'config.php';
 include 'authcheckkasir.php';
 
-// Mulai sesi jika belum dimulai
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Inisialisasi 'cart' sebagai array kosong jika belum ada
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-
-if (isset($_POST['kode_barang'])) {
+if (isset($_POST['kode_barang']) && isset($_POST['qty']) && is_numeric($_POST['qty'])) {
     $kode_barang = $_POST['kode_barang'];
-    $qty = 1;
+    $qty = intval($_POST['qty']);  // Mengonversi jumlah yang diinput menjadi bilangan bulat
 
-    //menampilkan data barang
+    // Menampilkan data barang
     $data = mysqli_query($dbconnect, "SELECT * FROM barang WHERE kode_barang='$kode_barang'");
     $b = mysqli_fetch_assoc($data);
 
-    // //cek diskon barang
-    // $disbarang = mysqli_query($dbconnect, "SELECT * FROM disbarang WHERE barang_id='$b[id_barang]'");
-    // $disb = mysqli_fetch_assoc($disbarang);
+    if ($b['jumlah'] < $qty) {
+        // Jika stok tidak cukup
+        $_SESSION['error'] = "Stok untuk '{$b['nama']}' tidak mencukupi, tersedia hanya {$b['jumlah']} unit.";
+        header('location: kasir.php');
+        exit;
+    }
 
-    //cek jika di keranjang sudah ada barang yang masuk
-    $key = array_search($b['id_barang'], array_column($_SESSION['cart'], 'id_barang'));
-	// return var_dump($key);
+    // Cek jika barang sudah ada di keranjang
+    $key = array_search($b['id_barang'], array_column($_SESSION['cart'], 'id'));
 
     if ($key !== false) {
-        // return var_dump($_SESSION['cart']);
-
-        //jika ada data yang sesuai di keranjang akan ditambahkan jumlah nya
-        $c_qty = $_SESSION['cart'][$key]['qty'];
-        $_SESSION['cart'][$key]['qty'] = $c_qty + 1;
-
-        //cek jika ada potongan dan cek jumlah barang lebih besar sama dengan minimum order potongan
-        if ($disb['qty'] && $_SESSION['cart'][$key]['qty'] >= $disb['qty']) {
-
-            //cek kelipatan jumlah barang dengan batas minimum order
-            $mod = $_SESSION['cart'][$key]['qty'] % $disb['qty'];
-
-            if ($mod == 0) {
-
-                //Jika benar jumlah barang kelipatan batas minimum order
-                $d = $_SESSION['cart'][$key]['qty'] / $disb['qty'];
-            } else {
-
-                //Simpan jumlah potongan yang didapat
-                $d = ($_SESSION['cart'][$key]['qty'] - $mod) / $disb['qty'];
-            }
-
-            //Simpan diskon dengan jumlah kelipatan dikali potongan barang
-            $_SESSION['cart'][$key]['diskon'] = $d * $disb['potongan'];
-        }
+        // Jika barang sudah ada, tambahkan jumlahnya
+        $_SESSION['cart'][$key]['qty'] += $qty;
     } else {
-        // return var_dump($b);
-        //Jika tidak ada yang sesuai akan menjadi barang baru dikeranjang
+        // Jika barang baru, tambahkan ke keranjang
         $barang = [
             'id' => $b['id_barang'],
             'nama' => $b['nama'],
@@ -67,10 +42,12 @@ if (isset($_POST['kode_barang'])) {
         ];
 
         $_SESSION['cart'][] = $barang;
-
-        //merubah urutan tampil pada keranjang
-        // krsort($_SESSION['cart']);
     }
 
-    header('location:kasir.php');
+    header('location: kasir.php');
+} else {
+    // Jika jumlah tidak di-set atau tidak valid
+    $_SESSION['error'] = 'Jumlah yang dimasukkan tidak valid. Harap masukkan angka yang benar.';
+    header('location: kasir.php');
 }
+?>

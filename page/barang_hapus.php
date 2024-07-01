@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
 
     $_SESSION['success'] = 'Berhasil menghapus data';
 
-    header('location: index.php?page=barang');
+    header('Location: ../index.php?page=barang');
 }
 
 ?>
