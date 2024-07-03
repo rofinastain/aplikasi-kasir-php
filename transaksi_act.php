@@ -13,16 +13,16 @@ $nama = $_SESSION['nama'];
 $kembali = $bayar - $total;
 
 // Cek stok cukup untuk setiap barang di keranjang sebelum proses transaksi
-foreach ($_SESSION['cart'] as $item) {
-    $cekStok = mysqli_query($dbconnect, "SELECT jumlah FROM barang WHERE id_barang = '{$item['id']}'");
-    $dataStok = mysqli_fetch_assoc($cekStok);
+// foreach ($_SESSION['cart'] as $item) {
+//     $cekStok = mysqli_query($dbconnect, "SELECT jumlah FROM barang WHERE id_barang = '{$item['id']}'");
+//     $dataStok = mysqli_fetch_assoc($cekStok);
 
-    if ($dataStok['jumlah'] < $item['qty']) {
-        $_SESSION['error'] = "Stok untuk barang '{$item['nama']}' tidak mencukupi.";
-        header('location: kasir.php');
-        exit;
-    }
-}
+//     if ($dataStok['jumlah'] < $item['qty']) {
+//         $_SESSION['error'] = "Stok untuk barang '{$item['nama']}' tidak mencukupi.";
+//         header('location: kasir.php');
+//         exit;
+//     }
+// }
 
 // Lanjutkan dengan proses transaksi jika stok cukup
 $insertTransaksi = mysqli_query($dbconnect, "INSERT INTO transaksi (tanggal_waktu, nomor, total, nama, bayar, kembali) VALUES ('$tanggal_waktu', '$nomor', '$total', '$nama', '$bayar', '$kembali')");

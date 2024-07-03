@@ -18,11 +18,11 @@ if (isset($_POST['kode_barang']) && isset($_POST['qty']) && is_numeric($_POST['q
     $b = mysqli_fetch_assoc($data);
 
     // Memeriksa ketersediaan stok
-    if ($b['jumlah'] < $qty) {
-        $_SESSION['error'] = "Stok tidak mencukupi untuk '{$b['nama']}'. Tersedia hanya {$b['jumlah']} unit.";
-        header('location: kasir.php');
-        exit;
-    }
+    // if ($b['jumlah'] < $qty) {
+    //     $_SESSION['error'] = "Stok tidak mencukupi untuk '{$b['nama']}'. Tersedia hanya {$b['jumlah']} unit.";
+    //     header('location: kasir.php');
+    //     exit;
+    // }
 
     // Mencari barang di dalam keranjang
     $key = array_search($b['id_barang'], array_column($_SESSION['cart'], 'id'));

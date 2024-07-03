@@ -23,7 +23,7 @@ if (isset($_SESSION['cart'])) {
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Kasir</h1>
+        <h1 style="background-color: black; color: white;">Kasir</h1>
             <h2>Hai <?=$_SESSION['nama']?></h2>
             <?php if (isset($_SESSION['error']) && $_SESSION['error'] != ''): ?>
             <div class="alert alert-danger" role="alert">
@@ -83,20 +83,20 @@ if (isset($_SESSION['cart'])) {
             </form>
         </div>
         <div class="col-md-4">
-            <h3>Total Rp <?=number_format($sum)?></h3>
-            <form action="transaksi_act.php" method="POST">
-                <input type="hidden" name="total" value="<?=$sum?>">
-                <div class="form-group">
-                    <label>Bayar</label>
-                    <input type="text" id="bayar" name="bayar" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Kembalian</label>
-                    <input type="text" id="kembalian" class="form-control" disabled>
-                </div>
-                <button type="submit" class="btn btn-primary">Selesai</button>
-            </form>
+    <h3>Total Rp <?=number_format($sum)?></h3>
+    <form action="transaksi_act.php" method="POST" target="_blank">
+        <input type="hidden" name="total" value="<?=$sum?>">
+        <div class="form-group">
+            <label>Bayar</label>
+            <input type="text" id="bayar" name="bayar" class="form-control" required>
         </div>
+        <div class="form-group">
+            <label>Kembalian</label>
+            <input type="text" id="kembalian" class="form-control" disabled>
+        </div>
+        <button type="submit" class="btn btn-primary">Selesai</button>
+    </form>
+</div>
     </div>
 </div>
 <script type="text/javascript">

@@ -20,7 +20,7 @@ $view = $dbconnect->query('SELECT * FROM transaksi');
 <body>
 <div class="container">
 
-	<?php if (isset($_SESSION['success']) && $_SESSION['success'] != '') {?>
+	<!-- <?php if (isset($_SESSION['success']) && $_SESSION['success'] != '') {?>
 
 		<div class="alert alert-success" role="alert">
 			<?=$_SESSION['success']?>
@@ -29,7 +29,7 @@ $view = $dbconnect->query('SELECT * FROM transaksi');
 	<?php
         }
         $_SESSION['success'] = '';
-    ?>
+    ?> -->
 
     <h1>Riwayat Transaksi</h1>
     <a href="/">Kembali</a>
