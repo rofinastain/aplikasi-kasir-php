@@ -50,7 +50,7 @@ $view = $dbconnect->query('SELECT * FROM transaksi');
                 <td><?= number_format($row['total']) ?></td>
                 <td><?= $row['nama'] ?></td>
                 <td>
-                    <a href="/unduh_struk.php?idtrx=<?= $row['id_transaksi'] ?>" class="btn btn-primary">Lihat</a>
+                    <a href="/transaksi_selesai.php?idtrx=<?= $row['id_transaksi'] ?>" class="btn btn-primary" target="_blank">Lihat</a>
                 </td>
             </tr>
         <?php endwhile; ?>

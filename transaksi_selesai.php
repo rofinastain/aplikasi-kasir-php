@@ -12,7 +12,6 @@ $detail = mysqli_query($dbconnect, "SELECT transaksi_detail.*, barang.nama FROM 
 
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +22,9 @@ $detail = mysqli_query($dbconnect, "SELECT transaksi_detail.*, barang.nama FROM 
 		}
 	</style>
 </head>
-<body onload="window.print();">
+<body>
 	<div align="center">
+		<!-- Provide a button or link to trigger printing -->
 		<table width="500" border="0" cellpadding="1" cellspacing="0">
 			<tr>
 			<th>Toko Sya'adah <br>
@@ -86,6 +86,7 @@ $detail = mysqli_query($dbconnect, "SELECT transaksi_detail.*, barang.nama FROM 
 				<th>WhatsApp +6281932855057</th>
 			</tr>
 		</table>
+		<br><button onclick="window.print();">Print this page</button>
 	</div>
 </body>
 </html>
